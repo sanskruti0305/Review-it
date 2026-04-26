@@ -1,0 +1,15 @@
+{
+  "name": "review-it-v2",
+  "version": "2.0.0",
+  "description": "MERN micro-review app — run both servers from root",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ..",
+    "dev":         "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server":      "cd backend  && npm run dev",
+    "client":      "cd frontend && npm run dev",
+    "build":       "cd frontend && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,232 @@
+/* src/pages/AddReview.css */
+
+/* ── Studio Layout ───────────────────────────────────────────── */
+.studio {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 52px 24px 80px;
+}
+
+.studio__card {
+  width: 100%;
+  max-width: 580px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  animation: fadeUp 0.45s ease both;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.studio__header {
+  margin-bottom: 32px;
+}
+
+.studio__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+.studio__header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+
+.studio__header p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ── Form ────────────────────────────────────────────────────── */
+.studio__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.92rem;
+  padding: 11px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-dim);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px var(--glow-cyan);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237878a0' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.form-select option {
+  background: var(--bg2);
+  color: var(--text);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 200px;
+  line-height: 1.65;
+}
+
+/* ── Char counter ─────────────────────────────────────────────── */
+.form-counter {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-align: right;
+  margin-top: -4px;
+}
+.form-counter.warn { color: var(--rose); }
+
+/* ── Interactive Star Rating ──────────────────────────────────── */
+.star-input {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.star-input input[type="radio"] {
+  display: none;
+}
+
+.star-input label {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-dim);
+  transition: color 0.15s, transform 0.15s;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+/* Hover forward fill trick: hover a star + all stars before it */
+.star-input label:hover,
+.star-input label:hover ~ label,
+.star-input input:checked ~ label {
+  color: var(--amber);
+}
+
+.star-input label:hover {
+  transform: scale(1.25);
+}
+
+/* ── Submit Button ────────────────────────────────────────────── */
+.studio__submit {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: var(--grad-hero);
+  color: #080810;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 6px;
+}
+
+.studio__submit:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(245,166,35,0.3);
+}
+
+.studio__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Error message ────────────────────────────────────────────── */
+.studio__error {
+  background: rgba(240, 84, 122, 0.12);
+  border: 1px solid rgba(240, 84, 122, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: var(--rose);
+  text-align: center;
+}
+
+/* ── Success overlay ──────────────────────────────────────────── */
+.studio__success {
+  text-align: center;
+  padding: 20px 0;
+  animation: fadeUp 0.4s ease both;
+}
+
+.studio__success .success-icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+  animation: pulse-glow 1.5s ease infinite;
+  display: block;
+}
+
+.studio__success h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.studio__success p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .studio__card { padding: 28px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+}

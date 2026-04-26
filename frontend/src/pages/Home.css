@@ -1,0 +1,144 @@
+/* src/pages/Home.css */
+
+/* ── Page Header ─────────────────────────────────────────────── */
+.home__hero {
+  padding: 52px 0 36px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.home__hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home__hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--amber);
+  border-radius: 2px;
+}
+
+.home__hero h1 {
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.home__hero p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 480px;
+  font-weight: 300;
+}
+
+/* ── Controls Bar ─────────────────────────────────────────────── */
+.home__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.4s 0.1s ease both;
+}
+
+/* Search input */
+.home__search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 360px;
+}
+
+.home__search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+.home__search {
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  color: var(--text);
+  font-size: 0.88rem;
+  padding: 10px 16px 10px 38px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.home__search::placeholder { color: var(--text-dim); }
+
+.home__search:focus {
+  border-color: rgba(245, 166, 35, 0.5);
+  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
+}
+
+/* Sort + filter pill group */
+.home__pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pill-btn {
+  padding: 8px 16px;
+  border-radius: 40px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  backdrop-filter: var(--glass-blur);
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.pill-btn:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+}
+
+.pill-btn.active {
+  background: rgba(245, 166, 35, 0.15);
+  border-color: rgba(245, 166, 35, 0.5);
+  color: var(--amber);
+}
+
+/* ── Feed Count ─────────────────────────────────────────────── */
+.home__feed-meta {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+  animation: fadeUp 0.4s 0.15s ease both;
+}
+
+/* ── Feed Grid ────────────────────────────────────────────────── */
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 640px) {
+  .feed-grid { grid-template-columns: 1fr; }
+  .home__controls { flex-direction: column; align-items: stretch; }
+  .home__search-wrap { max-width: 100%; }
+}

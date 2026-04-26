@@ -1,8 +1,3 @@
-// src/pages/Books.js
-// ─────────────────────────────────────────────────────────────────
-// Shows only Book reviews. Mirrors Movies.js but filters for Books.
-// ─────────────────────────────────────────────────────────────────
-
 import React from "react";
 import useReviews from "../hooks/useReviews";
 import ReviewCard from "../components/ReviewCard";

@@ -1,10 +1,3 @@
-// src/pages/Analytics.js
-// ─────────────────────────────────────────────────────────────────
-// Shows aggregate stats: total reviews, overall avg rating,
-// per-category counts and averages, and the 3 most recent reviews.
-// Data comes from GET /api/reviews/analytics (MongoDB aggregation).
-// ─────────────────────────────────────────────────────────────────
-
 import React, { useState, useEffect } from "react";
 import { fetchAnalytics } from "../utils/api";
 import ReviewCard from "../components/ReviewCard";
@@ -30,14 +23,12 @@ function Analytics() {
     load();
   }, []); // empty dependency array = runs once on mount
 
-  // ── Helper: find stats for a specific category ────────────────
   function getCatStats(category) {
     if (!data?.statsByCategory) return { count: 0, avgRating: 0 };
     const found = data.statsByCategory.find((s) => s._id === category);
     return found || { count: 0, avgRating: 0 };
   }
 
-  // ── Render ────────────────────────────────────────────────────
   if (loading) return <div className="page-wrapper"><div className="spinner" /></div>;
 
   if (error) {

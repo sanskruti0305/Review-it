@@ -1,9 +1,3 @@
-// config/db.js
-// ─────────────────────────────────────────────────────────────────
-// Single responsibility: connect to MongoDB using Mongoose.
-// We call this function once from server.js at startup.
-// ─────────────────────────────────────────────────────────────────
-
 const mongoose = require("mongoose");
 
 const connectDB = async () => {

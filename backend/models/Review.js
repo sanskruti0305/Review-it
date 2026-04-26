@@ -1,14 +1,7 @@
-// models/Review.js
-// ─────────────────────────────────────────────────────────────────
-// Defines the shape (schema) of a Review document in MongoDB.
-// Mongoose will enforce these rules before saving any data.
-// ─────────────────────────────────────────────────────────────────
 
 const mongoose = require("mongoose");
-
 const reviewSchema = new mongoose.Schema(
   {
-    // The name of the book or movie being reviewed
     title: {
       type: String,
       required: [true, "Title is required"],
@@ -16,7 +9,6 @@ const reviewSchema = new mongoose.Schema(
       maxlength: [120, "Title cannot exceed 120 characters"],
     },
 
-    // Which category this review belongs to
     category: {
       type: String,
       enum: {
@@ -26,7 +18,6 @@ const reviewSchema = new mongoose.Schema(
       required: [true, "Category is required"],
     },
 
-    // The reviewer's star rating (1 to 5)
     rating: {
       type: Number,
       required: [true, "Rating is required"],
@@ -34,15 +25,12 @@ const reviewSchema = new mongoose.Schema(
       max: [5, "Rating cannot exceed 5"],
     },
 
-    // The micro-review text — kept short intentionally
     reviewText: {
       type: String,
       required: [true, "Review text is required"],
       trim: true,
       maxlength: [300, "Keep it under 300 characters — this is a micro-review!"],
     },
-
-    // Optional: reviewer's display name
     name: {
       type: String,
       trim: true,
@@ -51,10 +39,7 @@ const reviewSchema = new mongoose.Schema(
     },
   },
   {
-    // Mongoose automatically adds `createdAt` and `updatedAt` fields
     timestamps: true,
   }
 );
-
-// Export the model so controllers can use it to query MongoDB
 module.exports = mongoose.model("Review", reviewSchema);

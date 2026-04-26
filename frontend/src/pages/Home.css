@@ -1,6 +1,4 @@
-/* src/pages/Home.css */
 
-/* ── Page Header ─────────────────────────────────────────────── */
 .home__hero {
   padding: 52px 0 36px;
   animation: fadeUp 0.4s ease both;
@@ -28,7 +26,7 @@
 }
 
 .home__hero h1 {
-  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-size: clamp(1.9rem, 3vw, 3.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -41,8 +39,6 @@
   max-width: 480px;
   font-weight: 300;
 }
-
-/* ── Controls Bar ─────────────────────────────────────────────── */
 .home__controls {
   display: flex;
   align-items: center;
@@ -121,7 +117,7 @@
   color: var(--amber);
 }
 
-/* ── Feed Count ─────────────────────────────────────────────── */
+
 .home__feed-meta {
   font-size: 0.78rem;
   color: var(--text-dim);
@@ -130,7 +126,6 @@
   animation: fadeUp 0.4s 0.15s ease both;
 }
 
-/* ── Feed Grid ────────────────────────────────────────────────── */
 .feed-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

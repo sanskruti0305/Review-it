@@ -1,18 +1,4 @@
-// controllers/reviewController.js
-// ─────────────────────────────────────────────────────────────────
-// Controllers contain the actual business logic for each route.
-// They receive (req, res) from Express and interact with the Model.
-// Keeping this separate from routes makes the code much cleaner.
-// ─────────────────────────────────────────────────────────────────
-
 const Review = require("../models/Review");
-
-// ── GET /api/reviews ─────────────────────────────────────────────
-// Fetches all reviews from MongoDB.
-// Supports optional query params:
-//   ?search=keyword   → filter by title
-//   ?category=Book    → filter by category
-//   ?sort=rating      → sort by highest rating (default: newest first)
 const getReviews = async (req, res) => {
   try {
     const { search, category, sort } = req.query;
@@ -49,7 +35,6 @@ const getReviews = async (req, res) => {
   }
 };
 
-// ── GET /api/reviews/analytics ────────────────────────────────────
 // Returns aggregate stats: total count, avg rating, per-category breakdown.
 const getAnalytics = async (req, res) => {
   try {
@@ -92,8 +77,6 @@ const getAnalytics = async (req, res) => {
   }
 };
 
-// ── POST /api/reviews ─────────────────────────────────────────────
-// Validates and saves a new review document to MongoDB.
 const createReview = async (req, res) => {
   try {
     const { title, category, rating, reviewText, name } = req.body;

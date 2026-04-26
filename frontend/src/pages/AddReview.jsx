@@ -1,10 +1,3 @@
-// src/pages/AddReview.js
-// ─────────────────────────────────────────────────────────────────
-// The "Studio" page ("/add") — a form for writing a new review.
-// On success: shows a success state, then uses useNavigate()
-// to redirect the user back to the Home feed automatically.
-// ─────────────────────────────────────────────────────────────────
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createReview } from "../utils/api";
@@ -28,14 +21,12 @@ function AddReview() {
   const [error,     setError]     = useState("");
   const [success,   setSuccess]   = useState(false);
 
-  // ── Generic change handler (works for all input types) ────────
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
     if (error) setError(""); // clear error when user starts typing again
   }
 
-  // ── Form Submission ───────────────────────────────────────────
   async function handleSubmit(e) {
     e.preventDefault(); // prevent default browser page-reload behavior
 
@@ -67,8 +58,6 @@ function AddReview() {
       setSubmitting(false);
     }
   }
-
-  // ── Success State ─────────────────────────────────────────────
   if (success) {
     return (
       <div className="studio">
@@ -83,7 +72,6 @@ function AddReview() {
     );
   }
 
-  // ── Form State ────────────────────────────────────────────────
   return (
     <div className="studio">
       <div className="studio__card">

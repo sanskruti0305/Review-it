@@ -1,6 +1,4 @@
-/* src/pages/Analytics.css */
 
-/* ── Stats Grid ──────────────────────────────────────────────── */
 .analytics__stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -46,8 +44,6 @@
   font-size: 0.78rem;
   color: var(--text-dim);
 }
-
-/* ── Category breakdown ──────────────────────────────────────── */
 .analytics__breakdown {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -124,7 +120,6 @@
 .rating-bar-fill.book  { background: var(--grad-book); }
 .rating-bar-fill.movie { background: var(--grad-movie); }
 
-/* ── Recent reviews section ──────────────────────────────────── */
 .analytics__recent h2 {
   font-size: 1.4rem;
   font-weight: 800;

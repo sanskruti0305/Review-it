@@ -1,8 +1,4 @@
-// src/pages/Home.js
-// ─────────────────────────────────────────────────────────────────
-// The main feed page ("/"). Shows all reviews in a responsive grid.
-// Supports live search (debounced) and Latest / Top Rated sorting.
-// ─────────────────────────────────────────────────────────────────
+
 
 import React, { useState, useMemo } from "react";
 import useReviews from "../hooks/useReviews";
@@ -20,7 +16,7 @@ function Home() {
     sort: sort === "rating" ? "rating" : undefined,
   });
 
-  // ── Client-side search filter ────────────────────────────────
+
   // useMemo re-runs only when reviews or search changes — efficient!
   const filtered = useMemo(() => {
     if (!search.trim()) return reviews;
@@ -31,7 +27,6 @@ function Home() {
     );
   }, [reviews, search]);
 
-  // ── Render ───────────────────────────────────────────────────
   return (
     <div className="page-wrapper">
       {/* Hero heading */}

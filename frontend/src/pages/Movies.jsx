@@ -1,9 +1,3 @@
-// src/pages/Movies.js
-// ─────────────────────────────────────────────────────────────────
-// Shows only Movie reviews. Uses the useReviews hook with a
-// category filter — the same hook used on Home, just parameterized.
-// ─────────────────────────────────────────────────────────────────
-
 import React from "react";
 import useReviews from "../hooks/useReviews";
 import ReviewCard from "../components/ReviewCard";

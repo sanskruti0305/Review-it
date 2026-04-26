@@ -1,13 +1,6 @@
-// src/components/ReviewCard.js
-// ─────────────────────────────────────────────────────────────────
-// Reusable card component. Renders differently for Book vs Movie
-// using CSS class names and conditional styling.
-// ─────────────────────────────────────────────────────────────────
-
 import React from "react";
 import "./ReviewCard.css";
 
-// ── Helper: build 5 star icons ────────────────────────────────────
 function StarDisplay({ rating, type }) {
   return (
     <div className="card__stars">
@@ -27,7 +20,7 @@ function StarDisplay({ rating, type }) {
   );
 }
 
-// ── Helper: format relative timestamp ─────────────────────────────
+
 function timeAgo(isoString) {
   const diff = (Date.now() - new Date(isoString)) / 1000;
   if (diff < 60)    return "just now";
@@ -38,7 +31,6 @@ function timeAgo(isoString) {
   });
 }
 
-// ── Main Card Component ────────────────────────────────────────────
 function ReviewCard({ review, index = 0 }) {
   const { title, category, rating, reviewText, name, createdAt } = review;
   const type = category === "Book" ? "book" : "movie";

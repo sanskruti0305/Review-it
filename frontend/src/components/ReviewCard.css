@@ -1,12 +1,9 @@
-/* src/components/ReviewCard.css */
-
 .review-card {
   position: relative;
   padding: 22px 24px 20px;
   border-radius: var(--radius-lg);
   overflow: hidden;
 
-  /* Glass effect */
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -20,19 +17,16 @@
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
 }
 
-/* Book cards get an amber glow on hover */
 .review-card.book:hover {
   border-color: rgba(245, 166, 35, 0.4);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55), 0 0 40px var(--glow-amber);
 }
 
-/* Movie cards get a cyan glow on hover */
 .review-card.movie:hover {
   border-color: rgba(56, 217, 245, 0.35);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55), 0 0 40px var(--glow-cyan);
 }
 
-/* Accent stripe on the left edge */
 .review-card::before {
   content: '';
   position: absolute;
@@ -44,7 +38,6 @@
 .review-card.book::before  { background: var(--grad-book); }
 .review-card.movie::before { background: var(--grad-movie); }
 
-/* ── Card Header ─────────────────────────────────────────────── */
 .card__header {
   display: flex;
   align-items: flex-start;
@@ -73,7 +66,6 @@
   font-weight: 400;
 }
 
-/* ── Stars ───────────────────────────────────────────────────── */
 .card__stars {
   flex-shrink: 0;
   display: flex;
@@ -86,7 +78,6 @@
   line-height: 1;
 }
 
-/* ── Review Text ─────────────────────────────────────────────── */
 .card__text {
   font-size: 0.88rem;
   line-height: 1.7;
@@ -95,7 +86,6 @@
   margin-bottom: 14px;
 }
 
-/* ── Footer ──────────────────────────────────────────────────── */
 .card__footer {
   display: flex;
   align-items: center;

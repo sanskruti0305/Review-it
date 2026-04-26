@@ -1,9 +1,4 @@
-// src/hooks/useReviews.js
-// ─────────────────────────────────────────────────────────────────
-// Custom React hook that encapsulates all API communication.
-// Any component that needs reviews just calls this hook —
-// no fetch() logic scattered across pages.
-// ─────────────────────────────────────────────────────────────────
+
 
 import { useState, useEffect, useCallback } from "react";
 

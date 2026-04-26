@@ -7,7 +7,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-const API_BASE = "/api/reviews"; // proxy in package.json routes to :5000
+const API_BASE = "https://review-it-backend.onrender.com/api/reviews"; // proxy in package.json routes to :5000
 
 function useReviews(params = {}) {
   const [reviews, setReviews]   = useState([]);

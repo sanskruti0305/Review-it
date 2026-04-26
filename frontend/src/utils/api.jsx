@@ -1,10 +1,5 @@
-// src/utils/api.js
-// ─────────────────────────────────────────────────────────────────
-// Utility functions for writing to the API.
-// Separating this from hooks keeps each file focused on one job.
-// ─────────────────────────────────────────────────────────────────
 
-const API_BASE = "/api/reviews";
+const API_BASE = "https://review-it-backend.onrender.com/api/reviews";
 
 // POST a new review to the backend
 export async function createReview(reviewData) {

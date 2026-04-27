@@ -4,7 +4,7 @@ import ReviewCard from "../components/ReviewCard";
 import "../pages/Home.css";
 
 function Books() {
-  const { reviews, loading, error } = useReviews({ category: "Book" });
+  const { reviews, loading, error, refetch: fetchReviews  } = useReviews({ category: "Book" });
 
   return (
     <div className="page-wrapper">
@@ -40,7 +40,7 @@ function Books() {
           </p>
           <div className="feed-grid">
             {reviews.map((r, i) => (
-              <ReviewCard key={r._id} review={r} index={i} />
+              <ReviewCard key={r._id} review={r} index={i} onRefresh={fetchReviews}/>
             ))}
           </div>
         </>

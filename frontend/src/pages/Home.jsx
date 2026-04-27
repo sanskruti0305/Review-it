@@ -12,7 +12,7 @@ function Home() {
 
   // Custom hook fetches reviews from the backend whenever sort changes.
   // Search is done client-side after fetch so it feels instant.
-  const { reviews, loading, error } = useReviews({
+  const { reviews, loading, error ,refetch: fetchReviews } = useReviews({
     sort: sort === "rating" ? "rating" : undefined,
   });
 
@@ -96,7 +96,7 @@ function Home() {
       {!loading && !error && filtered.length > 0 && (
         <div className="feed-grid">
           {filtered.map((review, i) => (
-            <ReviewCard key={review._id} review={review} index={i} />
+            <ReviewCard key={review._id} review={review} index={i} onRefresh={fetchReviews}/>
           ))}
         </div>
       )}

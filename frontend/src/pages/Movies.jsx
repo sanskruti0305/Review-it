@@ -5,7 +5,7 @@ import "../pages/Home.css"; // reuse the feed-grid layout
 
 function Movies() {
   // Pass category:"Movie" so the backend only returns movie reviews
-  const { reviews, loading, error } = useReviews({ category: "Movie" });
+  const { reviews, loading, error,refetch: fetchReviews  } = useReviews({ category: "Movie" });
 
   return (
     <div className="page-wrapper">
@@ -41,7 +41,7 @@ function Movies() {
           </p>
           <div className="feed-grid">
             {reviews.map((r, i) => (
-              <ReviewCard key={r._id} review={r} index={i} />
+              <ReviewCard key={r._id} review={r} index={i} onRefresh={fetchReviews}/>
             ))}
           </div>
         </>

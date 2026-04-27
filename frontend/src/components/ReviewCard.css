@@ -97,3 +97,187 @@
   color: var(--text-dim);
   letter-spacing: 0.04em;
 }
+.card__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+
+.btn-edit {
+  background: rgba(56, 217, 245, 0.12);
+  border-color: rgba(56, 217, 245, 0.35);
+  color: var(--cyan);
+}
+
+.btn-edit:hover {
+  background: rgba(56, 217, 245, 0.25);
+}
+
+.btn-delete {
+  background: rgba(240, 84, 122, 0.12);
+  border-color: rgba(240, 84, 122, 0.35);
+  color: #f0547a;
+}
+
+.btn-delete:hover {
+  background: rgba(240, 84, 122, 0.25);
+}
+
+
+.card__edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card__edit-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--cyan);
+}
+
+.edit-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.edit-input,
+.edit-textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  padding: 8px 10px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.edit-input:focus,
+.edit-textarea:focus {
+  border-color: var(--cyan);
+  outline: none;
+}
+
+.edit-textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.edit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.edit-counter {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-align: right;
+  margin-top: -4px;
+}
+
+.edit-error {
+  font-size: 0.8rem;
+  color: #f0547a;
+  background: rgba(240,84,122,0.1);
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-save {
+  flex: 1;
+  padding: 9px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--amber), var(--cyan));
+  color: #080810;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 9px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  font-family: var(--font-body);
+}
+
+.btn-cancel:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+
+.card__delete-confirm {
+  padding: 8px 0;
+}
+
+.delete-question {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.delete-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.btn-delete-confirm {
+  flex: 1;
+  padding: 9px;
+  border-radius: 8px;
+  background: rgba(240,84,122,0.85);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-delete-confirm:hover { opacity: 0.85; }
+.btn-delete-confirm:disabled { opacity: 0.5; cursor: not-allowed; }

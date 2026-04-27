@@ -35,6 +35,7 @@ const getReviews = async (req, res) => {
   }
 };
 
+
 // Returns aggregate stats: total count, avg rating, per-category breakdown.
 const getAnalytics = async (req, res) => {
   try {
@@ -106,5 +107,37 @@ const createReview = async (req, res) => {
     });
   }
 };
+const updateReview = async (req, res) => {
+  try {
+    const { title, category, rating, reviewText, name } = req.body;
+    const updatedReview = await Review.findByIdAndUpdate(
+      req.params.id,
+      { title, category, rating, reviewText, name },
+      { new: true, runValidators: true }
+    );
+    if (!updatedReview) {
+      return res.status(404).json({ success: false, message: "Review not found" });
+    }
+    res.status(200).json({ success: true, data: updatedReview });
+  } catch (error) {
+    if (error.name === "ValidationError") {
+      const messages = Object.values(error.errors).map((e) => e.message);
+      return res.status(400).json({ success: false, message: messages.join(", ") });
+    }
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
+};
 
-module.exports = { getReviews, getAnalytics, createReview };
+const deleteReview = async (req, res) => {
+  try {
+    const deleted = await Review.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ success: false, message: "Review not found" });
+    }
+    res.status(200).json({ success: true, message: "Review deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
+};
+
+module.exports = { getReviews, getAnalytics, createReview ,updateReview, deleteReview };

@@ -1,5 +1,6 @@
 const express = require("express");
 const router  = express.Router();
+const authMiddleware = require("../middleware/authMiddleware");
 const {
   getReviews,
   getAnalytics,
@@ -8,10 +9,13 @@ const {
   deleteReview,
 } = require("../controllers/reviewController");
 
+
+
 router.get("/analytics",  getAnalytics);   // GET  /api/reviews/analytics
 router.get("/",           getReviews);     // GET  /api/reviews
-router.post("/",          createReview);   // POST /api/reviews
-router.put("/:id",        updateReview);   // PUT  /api/reviews/:id
-router.delete("/:id",     deleteReview);   // DELETE /api/reviews/:id
+
+router.post("/", authMiddleware, createReview);
+router.put("/:id", authMiddleware, updateReview);
+router.delete("/:id", authMiddleware, deleteReview);
 
 module.exports = router;

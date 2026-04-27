@@ -37,6 +37,11 @@ const reviewSchema = new mongoose.Schema(
       default: "Anonymous",
       maxlength: [50, "Name cannot exceed 50 characters"],
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   {
     timestamps: true,

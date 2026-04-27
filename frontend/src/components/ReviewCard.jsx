@@ -37,6 +37,12 @@ function timeAgo(isoString) {
 function ReviewCard({ review, index = 0, onRefresh }) {
   const { _id, title, category, rating, reviewText, name, createdAt } = review;
   const type = category === "Book" ? "book" : "movie";
+  const loggedInUser = JSON.parse(
+  localStorage.getItem("user")
+);
+
+const isOwner =
+  review.user?._id === loggedInUser?.id;
 
  
   const [isEditing,   setIsEditing]   = useState(false);  // toggle edit form
@@ -214,22 +220,25 @@ function ReviewCard({ review, index = 0, onRefresh }) {
         <span className="card__time">⏱ {timeAgo(createdAt)}</span>
 
         {/* Edit and Delete buttons */}
-        <div className="card__actions">
-          <button
-            className="btn-edit"
-            onClick={() => setIsEditing(true)}
-            title="Edit this review"
-          >
-            ✏️ Edit
-          </button>
-          <button
-            className="btn-delete"
-            onClick={() => setIsDeleting(true)}
-            title="Delete this review"
-          >
-            🗑️ Delete
-          </button>
-        </div>
+        {isOwner && (
+  <div className="card__actions">
+    <button
+      className="btn-edit"
+      onClick={() => setIsEditing(true)}
+      title="Edit this review"
+    >
+      ✏️ Edit
+    </button>
+
+    <button
+      className="btn-delete"
+      onClick={() => setIsDeleting(true)}
+      title="Delete this review"
+    >
+      🗑️ Delete
+    </button>
+  </div>
+)}
       </div>
     </article>
   );

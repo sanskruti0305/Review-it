@@ -6,12 +6,14 @@
 
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar     from "./components/Navbar";
-import Home       from "./pages/Home";
-import AddReview  from "./pages/AddReview";
-import Movies     from "./pages/Movies";
-import Books      from "./pages/Books";
-import Analytics  from "./pages/Analytics";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import AddReview from "./pages/AddReview";
+import Movies from "./pages/Movies";
+import Books from "./pages/Books";
+import Analytics from "./pages/Analytics";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -21,11 +23,13 @@ function App() {
 
       <main className="main-content">
         <Routes>
-          <Route path="/"          element={<Home />}      />
-          <Route path="/add"       element={<AddReview />} />
-          <Route path="/movies"    element={<Movies />}    />
-          <Route path="/books"     element={<Books />}     />
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<AddReview />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/books" element={<Books />} />
           <Route path="/analytics" element={<Analytics />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
     </div>

@@ -1,11 +1,19 @@
 
 const API_BASE = "https://review-it-backend.onrender.com/api/reviews";
+function getAuthHeaders() {
+  const token = localStorage.getItem("token");
+
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+}
 
 // POST
 export async function createReview(reviewData) {
   const response = await fetch(API_BASE, {
     method:  "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: getAuthHeaders(),
     body:    JSON.stringify(reviewData),
   });
 
@@ -31,7 +39,7 @@ export async function fetchAnalytics() {
 export async function updateReview(id, reviewData) {
   const response = await fetch(`${API_BASE}/${id}`, {
     method:  "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: getAuthHeaders(),
     body:    JSON.stringify(reviewData),
   });
 
@@ -44,6 +52,9 @@ export async function updateReview(id, reviewData) {
 export async function deleteReview(id) {
   const response = await fetch(`${API_BASE}/${id}`, {
     method: "DELETE",
+     headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
   });
 
   const json = await response.json();

@@ -70,8 +70,7 @@ function MyReviews() {
         <h1>My Reviews</h1>
 
         <p>
-          Only your posted reviews appear here.
-          Edit and delete from this page only.
+          Your posted reviews appear here.
         </p>
       </div>
 

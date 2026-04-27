@@ -1,0 +1,65 @@
+.myreviews-hero {
+  margin-bottom: 40px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.myreviews-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+.myreviews-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.myreviews-hero p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+.myreviews-meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 22px;
+  letter-spacing: 0.03em;
+}
+
+.myreviews-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
+}
+
+.myreviews-empty .icon {
+  font-size: 3rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.myreviews-empty p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.myreviews-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  );
+  gap: 18px;
+}
+
+@media (max-width: 640px) {
+  .myreviews-grid {
+    grid-template-columns: 1fr;
+  }
+}

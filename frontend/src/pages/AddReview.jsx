@@ -3,69 +3,93 @@ import { useNavigate } from "react-router-dom";
 import { createReview } from "../utils/api";
 import "./AddReview.css";
 
-// Initial blank form state — defined outside component to avoid re-creation
 const INITIAL_FORM = {
-  title:      "",
-  category:   "",
-  rating:     0,
+  title: "",
+  category: "",
+  rating: 0,
   reviewText: "",
-  name:       "",
+  name: "",
 };
 
 function AddReview() {
-  // useNavigate gives us a function to programmatically change routes
   const navigate = useNavigate();
 
-  const [form,      setForm]      = useState(INITIAL_FORM);
+  const [form, setForm] = useState(INITIAL_FORM);
   const [submitting, setSubmitting] = useState(false);
-  const [error,     setError]     = useState("");
-  const [success,   setSuccess]   = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    if (error) setError(""); // clear error when user starts typing again
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (error) setError("");
   }
 
   async function handleSubmit(e) {
-    e.preventDefault(); // prevent default browser page-reload behavior
+    e.preventDefault();
 
-    // Client-side validation before hitting the server
-    if (!form.title.trim())    return setError("Please enter the title.");
-    if (!form.category)        return setError("Please select a category.");
-    if (!form.rating)          return setError("Please pick a star rating.");
-    if (!form.reviewText.trim()) return setError("Review text cannot be empty.");
+    if (!form.title.trim()) {
+      return setError("Please enter the title.");
+    }
+
+    if (!form.category) {
+      return setError("Please select a category.");
+    }
+
+    if (!form.rating) {
+      return setError("Please pick a star rating.");
+    }
+
+    if (!form.reviewText.trim()) {
+      return setError("Review text cannot be empty.");
+    }
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+      return;
+    }
 
     setSubmitting(true);
     setError("");
 
     try {
-      // Call our API utility function (POST /api/reviews)
       await createReview({
         ...form,
-        rating: Number(form.rating), // convert string to number
+        rating: Number(form.rating),
       });
 
-      // Show success state in the UI
       setSuccess(true);
 
-      // After 2.2 seconds, navigate to the home feed to see the new review
-      setTimeout(() => navigate("/"), 2200);
+      setTimeout(() => {
+        navigate("/my-reviews");
+      }, 2000);
 
     } catch (err) {
-      setError(err.message || "Something went wrong. Please try again.");
+      setError(
+        err.message || "Something went wrong."
+      );
     } finally {
       setSubmitting(false);
     }
   }
+
   if (success) {
     return (
       <div className="studio">
         <div className="studio__card">
           <div className="studio__success">
             <span className="success-icon">✦</span>
-            <h2 className="grad-text-book">Review Posted!</h2>
-            <p>Taking you to The Reel in a moment…</p>
+            <h2 className="grad-text-book">
+              Review Posted!
+            </h2>
+            <p>Taking you to My Reviews...</p>
           </div>
         </div>
       </div>
@@ -76,63 +100,78 @@ function AddReview() {
     <div className="studio">
       <div className="studio__card">
         <div className="studio__header">
-          <p className="studio__eyebrow">The Studio</p>
-          <h1>Write a Micro-Review</h1>
-          <p>Keep it punchy — 300 characters max.</p>
+          <p className="studio__eyebrow">
+            The Studio
+          </p>
+
+          <h1>
+            Write a Micro-Review
+          </h1>
+
+          <p>
+            Keep it punchy — 300 characters max.
+          </p>
         </div>
 
-        <form className="studio__form" onSubmit={handleSubmit} noValidate>
-
-          {/* Title */}
+        <form
+          className="studio__form"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <div className="form-field">
-            <label htmlFor="title">Title of Book / Movie</label>
+            <label>
+              Title of Book / Movie
+            </label>
+
             <input
-              id="title"
               className="form-input"
               type="text"
               name="title"
-              placeholder="e.g. Dune, Atomic Habits…"
+              placeholder="e.g. Dune"
               value={form.title}
               onChange={handleChange}
-              maxLength={120}
             />
           </div>
 
-          {/* Category + Your Name side-by-side */}
           <div className="form-row">
             <div className="form-field">
-              <label htmlFor="category">Category</label>
+              <label>Category</label>
+
               <select
-                id="category"
                 className="form-select"
                 name="category"
                 value={form.category}
                 onChange={handleChange}
               >
-                <option value="">— Choose —</option>
-                <option value="Book">📚 Book</option>
-                <option value="Movie">🎬 Movie</option>
+                <option value="">
+                  — Choose —
+                </option>
+                <option value="Book">
+                  📚 Book
+                </option>
+                <option value="Movie">
+                  🎬 Movie
+                </option>
               </select>
             </div>
 
             <div className="form-field">
-              <label htmlFor="name">Your Name</label>
+              <label>Your Name</label>
+
               <input
-                id="name"
                 className="form-input"
                 type="text"
                 name="name"
                 placeholder="Anonymous"
                 value={form.name}
                 onChange={handleChange}
-                maxLength={50}
               />
             </div>
           </div>
 
-          {/* Star Rating — CSS-only reverse-flex trick */}
           <div className="form-field">
             <label>Rating</label>
+
             <div className="star-input">
               {[5, 4, 3, 2, 1].map((star) => (
                 <React.Fragment key={star}>
@@ -141,46 +180,53 @@ function AddReview() {
                     id={`star-${star}`}
                     name="rating"
                     value={star}
-                    checked={Number(form.rating) === star}
+                    checked={
+                      Number(form.rating) === star
+                    }
                     onChange={handleChange}
                   />
-                  <label htmlFor={`star-${star}`} title={`${star} star`}>★</label>
+
+                  <label htmlFor={`star-${star}`}>
+                    ★
+                  </label>
                 </React.Fragment>
               ))}
             </div>
           </div>
 
-          {/* Review Text */}
           <div className="form-field">
-            <label htmlFor="reviewText">
+            <label>
               Your Micro-Review
             </label>
+
             <textarea
-              id="reviewText"
               className="form-textarea"
               name="reviewText"
-              placeholder="What made it great? What fell flat? Be quick about it…"
               value={form.reviewText}
               onChange={handleChange}
               maxLength={300}
             />
-            <span className={`form-counter ${form.reviewText.length > 270 ? "warn" : ""}`}>
+
+            <span className="form-counter">
               {form.reviewText.length} / 300
             </span>
           </div>
 
-          {/* Error message */}
-          {error && <p className="studio__error">{error}</p>}
+          {error && (
+            <p className="studio__error">
+              {error}
+            </p>
+          )}
 
-          {/* Submit */}
           <button
             type="submit"
             className="studio__submit"
             disabled={submitting}
           >
-            {submitting ? "Posting…" : "Post Review ✦"}
+            {submitting
+              ? "Posting..."
+              : "Post Review ✦"}
           </button>
-
         </form>
       </div>
     </div>

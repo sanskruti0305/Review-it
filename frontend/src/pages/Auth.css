@@ -1,69 +1,96 @@
 .auth-container {
-  min-height: 100vh;
+  min-height: calc(100vh - var(--nav-height));
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f8fafc;
-  padding: 20px;
+  padding: 48px 24px;
 }
 
 .auth-box {
   width: 100%;
-  max-width: 420px;
-  background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  max-width: 460px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  animation: fadeUp 0.4s ease both;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
 }
 
 .auth-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
   text-align: center;
-  margin-bottom: 24px;
-  font-size: 28px;
-  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .auth-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.95rem;
   padding: 14px 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
+  transition: all 0.2s ease;
+}
+
+.auth-input::placeholder {
+  color: var(--text-dim);
 }
 
 .auth-input:focus {
-  border-color: #2563eb;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(56,217,245,0.08);
 }
 
 .auth-btn {
+  width: 100%;
   padding: 14px;
-  border: none;
-  border-radius: 10px;
-  background: #111827;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--grad-hero);
+  color: #080810;
+  transition: 0.2s;
+  margin-top: 8px;
 }
 
 .auth-btn:hover {
-  opacity: 0.95;
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
 .auth-footer {
   text-align: center;
-  margin-top: 18px;
-  font-size: 14px;
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
 .auth-footer a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #2563eb;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.auth-footer a:hover {
+  opacity: 0.85;
 }

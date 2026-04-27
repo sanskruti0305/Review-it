@@ -141,7 +141,7 @@ function Analytics() {
           <h2>Recently Posted</h2>
           <div className="analytics__recent-grid">
             {data.recentReviews.map((r, i) => (
-              <ReviewCard key={r._id} review={r} index={i} />
+              <ReviewCard key={r._id} review={r} index={i} showActions={false} />
             ))}
           </div>
         </div>

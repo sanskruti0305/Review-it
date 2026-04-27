@@ -1,9 +1,3 @@
-// src/App.js
-// ─────────────────────────────────────────────────────────────────
-// Root component. Defines all client-side routes using react-router-dom v6.
-// <Routes> replaces the old <Switch>; <Route> uses "element" prop.
-// ─────────────────────────────────────────────────────────────────
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -14,6 +8,7 @@ import Books from "./pages/Books";
 import Analytics from "./pages/Analytics";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import MyReviews from "./pages/MyReviews";
 
 function App() {
   return (
@@ -30,6 +25,9 @@ function App() {
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/my-reviews" element={<MyReviews />}
+          />
+
         </Routes>
       </main>
     </div>

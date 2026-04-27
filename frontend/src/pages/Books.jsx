@@ -40,7 +40,7 @@ function Books() {
           </p>
           <div className="feed-grid">
             {reviews.map((r, i) => (
-              <ReviewCard key={r._id} review={r} index={i} onRefresh={fetchReviews}/>
+              <ReviewCard key={r._id} review={r} index={i} onRefresh={fetchReviews} showActions={false}/>
             ))}
           </div>
         </>

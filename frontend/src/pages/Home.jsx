@@ -96,7 +96,7 @@ function Home() {
       {!loading && !error && filtered.length > 0 && (
         <div className="feed-grid">
           {filtered.map((review, i) => (
-            <ReviewCard key={review._id} review={review} index={i} onRefresh={fetchReviews}/>
+            <ReviewCard key={review._id} review={review} index={i} onRefresh={fetchReviews} showActions={false}/>
           ))}
         </div>
       )}

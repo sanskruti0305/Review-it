@@ -34,8 +34,27 @@ const getReviews = async (req, res) => {
     });
   }
 };
+const getMyReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      user: req.user.id,
+    })
+      .sort({ createdAt: -1 })
+      .populate("user", "name email");
 
-
+    res.status(200).json({
+      success: true,
+      count: reviews.length,
+      data: reviews,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error while fetching your reviews",
+      error: error.message,
+    });
+  }
+};
 // Returns aggregate stats: total count, avg rating, per-category breakdown.
 const getAnalytics = async (req, res) => {
   try {
@@ -181,4 +200,4 @@ const deleteReview = async (req, res) => {
 };
    
 
-module.exports = { getReviews, getAnalytics, createReview ,updateReview, deleteReview };
+module.exports = { getReviews, getMyReviews, getAnalytics, createReview ,updateReview, deleteReview };

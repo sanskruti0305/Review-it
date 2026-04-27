@@ -1,5 +1,6 @@
+const API_BASE =
+  "https://review-it-backend.onrender.com/api/reviews";
 
-const API_BASE = "https://review-it-backend.onrender.com/api/reviews";
 function getAuthHeaders() {
   const token = localStorage.getItem("token");
 
@@ -9,55 +10,127 @@ function getAuthHeaders() {
   };
 }
 
-// POST
+/* =========================
+   CREATE REVIEW
+========================= */
+
 export async function createReview(reviewData) {
   const response = await fetch(API_BASE, {
-    method:  "POST",
+    method: "POST",
     headers: getAuthHeaders(),
-    body:    JSON.stringify(reviewData),
+    body: JSON.stringify(reviewData),
   });
 
   const json = await response.json();
 
-  // If the server returned an error status, throw so the caller can catch it
   if (!json.success) {
-    throw new Error(json.message || "Failed to post review");
+    throw new Error(
+      json.message || "Failed to post review"
+    );
   }
 
-  return json.data; // the newly saved review document
+  return json.data;
 }
 
-// GET 
+/* =========================
+   GET ANALYTICS
+========================= */
+
 export async function fetchAnalytics() {
-  const response = await fetch(`${API_BASE}/analytics`);
-  const json     = await response.json();
-  if (!json.success) throw new Error(json.message);
-  return json.data;
-}
-
-// PUT 
-export async function updateReview(id, reviewData) {
-  const response = await fetch(`${API_BASE}/${id}`, {
-    method:  "PUT",
-    headers: getAuthHeaders(),
-    body:    JSON.stringify(reviewData),
-  });
+  const response = await fetch(
+    `${API_BASE}/analytics`
+  );
 
   const json = await response.json();
-  if (!json.success) throw new Error(json.message || "Failed to update review");
+
+  if (!json.success) {
+    throw new Error(
+      json.message || "Failed to fetch analytics"
+    );
+  }
+
   return json.data;
 }
 
-// DELETE 
+/* =========================
+   UPDATE REVIEW
+========================= */
+
+export async function updateReview(
+  id,
+  reviewData
+) {
+  const response = await fetch(
+    `${API_BASE}/${id}`,
+    {
+      method: "PUT",
+      headers: getAuthHeaders(),
+      body: JSON.stringify(reviewData),
+    }
+  );
+
+  const json = await response.json();
+
+  if (!json.success) {
+    throw new Error(
+      json.message || "Failed to update review"
+    );
+  }
+
+  return json.data;
+}
+
+/* =========================
+   DELETE REVIEW
+========================= */
+
 export async function deleteReview(id) {
-  const response = await fetch(`${API_BASE}/${id}`, {
-    method: "DELETE",
-     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
+  const response = await fetch(
+    `${API_BASE}/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(
+          "token"
+        )}`,
+      },
+    }
+  );
 
   const json = await response.json();
-  if (!json.success) throw new Error(json.message || "Failed to delete review");
+
+  if (!json.success) {
+    throw new Error(
+      json.message || "Failed to delete review"
+    );
+  }
+
   return json;
+}
+
+/* =========================
+   GET MY REVIEWS
+========================= */
+
+export async function fetchMyReviews() {
+  const response = await fetch(
+    `${API_BASE}/myreviews`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(
+          "token"
+        )}`,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!json.success) {
+    throw new Error(
+      json.message || "Failed to fetch your reviews"
+    );
+  }
+
+  return json.data;
 }

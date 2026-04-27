@@ -50,7 +50,10 @@ const Login = () => {
  return (
   <div className="auth-container">
     <div className="auth-box">
-      <h2 className="auth-title">Login</h2>
+      <h2 className="auth-title">Welcome Back</h2>
+<p className="auth-subtitle">
+Login to post, edit and manage your reviews
+</p>
 
       <form
         className="auth-form"

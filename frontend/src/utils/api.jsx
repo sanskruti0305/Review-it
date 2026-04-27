@@ -114,7 +114,7 @@ export async function deleteReview(id) {
 
 export async function fetchMyReviews() {
   const response = await fetch(
-    `${API_BASE}/myreviews`,
+    `${API_BASE}/my-reviews`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem(

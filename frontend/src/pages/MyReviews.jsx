@@ -20,7 +20,7 @@ function MyReviews() {
       }
 
       const response = await fetch(
-        "https://review-it-backend.onrender.com/api/reviews/myreviews",
+        "https://review-it-backend.onrender.com/api/reviews/my-reviews",
         {
           headers: {
             Authorization: `Bearer ${token}`,

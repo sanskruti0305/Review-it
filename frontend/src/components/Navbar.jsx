@@ -43,6 +43,7 @@ function Navbar() {
             Review-It ✦
           </NavLink>
 
+          {/* Desktop Menu */}
           <div className="navbar__links">
             {navLinks.map((link) => (
               <NavLink
@@ -82,8 +83,60 @@ function Navbar() {
               + Write Review
             </NavLink>
           </div>
+
+          {/* Mobile Hamburger */}
+          <button
+            className="navbar__hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="navbar__mobile-menu">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === "/"}
+              className="navbar__link"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+
+          {!isLoggedIn ? (
+            <NavLink
+              to="/login"
+              className="navbar__link"
+              onClick={() => setMenuOpen(false)}
+            >
+              Login
+            </NavLink>
+          ) : (
+            <button
+              className="navbar__link"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )}
+
+          <NavLink
+            to="/add"
+            className="navbar__cta"
+            onClick={() => setMenuOpen(false)}
+          >
+            + Write Review
+          </NavLink>
+        </div>
+      )}
     </>
   );
 }

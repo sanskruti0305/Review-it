@@ -94,3 +94,57 @@
 .auth-footer a:hover {
   opacity: 0.85;
 }
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 32px 18px;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+
+  .auth-box {
+    padding: 30px 22px;
+    border-radius: 20px;
+  }
+
+  .auth-title {
+    font-size: 1.7rem;
+  }
+
+  .auth-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 22px;
+  }
+
+  .auth-input {
+    padding: 13px 14px;
+    font-size: 0.92rem;
+  }
+
+  .auth-btn {
+    padding: 13px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 24px 14px;
+    padding-top: 50px;
+  }
+
+  .auth-box {
+    padding: 24px 18px;
+  }
+
+  .auth-title {
+    font-size: 1.5rem;
+  }
+
+  .auth-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .auth-footer {
+    font-size: 0.85rem;
+  }
+}

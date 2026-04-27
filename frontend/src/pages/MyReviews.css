@@ -58,8 +58,47 @@
   gap: 18px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .myreviews-hero {
+    margin-bottom: 28px;
+  }
+
+  .myreviews-hero h1 {
+    font-size: 2rem;
+  }
+
+  .myreviews-hero p {
+    font-size: 0.9rem;
+  }
+
   .myreviews-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .myreviews-empty {
+    padding: 60px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .myreviews-eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .myreviews-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .myreviews-hero p {
+    font-size: 0.85rem;
+  }
+
+  .myreviews-meta {
+    font-size: 0.75rem;
+  }
+
+  .myreviews-empty .icon {
+    font-size: 2.5rem;
   }
 }

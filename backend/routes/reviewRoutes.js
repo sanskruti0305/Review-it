@@ -14,7 +14,7 @@ const {
 
 router.get("/analytics", getAnalytics);
 router.get("/", getReviews);
-router.get("/myreviews", authMiddleware, getMyReviews);
+router.get("/my-reviews", authMiddleware, getMyReviews);
 
 
 router.post("/", authMiddleware, createReview);
